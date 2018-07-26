@@ -10,27 +10,27 @@
 	margin-right: 20px;
 }
 #newslinks li a {
-	padding: 5px 10px; 
+	padding: 5px 10px;
 	background-color: white;
 	color: black !important;
-	text-decoration: none;	
+	text-decoration: none;
 }
 #newslinks li a:hover {
 	background-color: rgb(110,138,195);
-	color: white !important;	
+	color: white !important;
 }
 #headlines #newsItem {
 	margin-top: 10px;
 	padding: 20px;
-	border: 1px solid white;	
+	border: 1px solid white;
 }
 </style>
 <script src="../_js/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	
+	$('#headlines').load("today.html #newsItem", function() {
+  alert( "Load was performed." );});
 
-			
 }); // end ready
 </script>
 </head>
