@@ -28,13 +28,13 @@
 <script src="../_js/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-		
+
 $('#gallery img').each(function(i) {
 	var imgFile = $(this).attr('src');
 	var preloadImage = new Image();
 	var imgExt = /(\.\w{3,4}$)/;
 	preloadImage.src = imgFile.replace(imgExt,'_h$1');
-		
+
 	$(this).hover(
 		function() {
 			$(this).attr('src', preloadImage.src);
@@ -44,10 +44,29 @@ $('#gallery img').each(function(i) {
 			$(this).attr('src', imgFile);
 	}); // end hover
 }); // end each
-	
+
 //insert new programming below this line
-	
-	
+	$('#gallery a').click(function(event){
+		// prevent default behaviour of opening image as new page
+		event.preventDefault();
+
+		// get path of new image to be displayed in gallery
+		let imgPath = $(this).attr('href');
+
+		// swap the gallery image
+		let oldImage = $('#photo img');
+		let newImage = $('<img src="' + imgPath + '">');
+
+		// before swapping in image, add eligant animations
+		newImage.hide();
+		$('#photo').prepend(newImage);	// append HTML with new image path
+		newImage.fadeIn(1000);
+		oldImage.fadeOut(1000, function(){
+			$(this).remove();
+		}); // end fade out
+
+	}) // end click
+
 }); // end ready
 </script>
 </head>
